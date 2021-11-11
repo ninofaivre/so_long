@@ -6,7 +6,7 @@
 /*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:58:38 by nino              #+#    #+#             */
-/*   Updated: 2021/11/09 19:22:57 by nino             ###   ########.fr       */
+/*   Updated: 2021/11/11 16:32:19 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define HEADER_H
 
 # include "mlx.h"
+# include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <unistd.h>
 
 typedef struct s_mob
 {
@@ -72,21 +72,21 @@ typedef struct s_vars
 	struct s_mob		*mob;
 }	t_vars;
 
-char	**get_map(const char *map_file);
 void	moove(int keycode, t_vars *vars);
 int		init(t_vars *v, char *map_file);
-int		locate_char(char **map, char c, char x_or_y, int occur);
-void	put_map_window(t_vars *vars);
-void	update_map_window(t_vars *vars, int keycode);
-int		print_error(int i);
 int		parsing(t_vars *vars, char *map_file);
+
+int		print_error(int i);
 
 t_mob	*free_mob(t_vars *vars);
 void	load_asset(t_vars *v, char *asset_file, t_img *img);
 
+void	update_map_window(t_vars *vars, int keycode);
+void	put_map_window(t_vars *vars);
 int		size_map(char **map, char width_or_height);
 int		locate_char(char **map, char c, char x_or_y, int occur);
 
+char	**get_map(const char *map_file);
 char	*get_next_line(int fd);
 
 #endif

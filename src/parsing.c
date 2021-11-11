@@ -6,11 +6,10 @@
 /*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:40:10 by nino              #+#    #+#             */
-/*   Updated: 2021/11/09 19:00:42 by nino             ###   ########.fr       */
+/*   Updated: 2021/11/11 16:20:48 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "header.h"
 
 static int	check_map_name(char *map)

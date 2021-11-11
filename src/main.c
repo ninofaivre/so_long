@@ -6,7 +6,7 @@
 /*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:02:44 by nino              #+#    #+#             */
-/*   Updated: 2021/11/09 19:44:15 by nino             ###   ########.fr       */
+/*   Updated: 2021/11/11 16:40:55 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 int	print_error(int i)
 {
-	printf("======================================================\n");
+	write(2, "Error\n", 6);
+	write(2, "======================================================\n", 55);
 	if (i == 0)
 	{
-		printf("WRONG ARGS !\nUsage : ./so_long [MAP'S_NAME.ber]\n");
-		printf("Exemple : ./so_long 'test.ber'\n");
+		write(2, "WRONG ARGS !\nUsage : ./so_long [MAP'S_NAME.ber]\n", 49);
+		write(2, "Exemple : ./so_long 'test.ber'\n", 31);
 	}
 	else if (i == 1)
-		printf("MALLOC FAILED DURING INIT !\n");
+		write(2, "MALLOC FAILED DURING INIT !\n", 28);
 	else if (i == 2)
-		printf("WRONG MAP'S NAME !\n");
+		write(2, "WRONG MAP'S NAME !\n", 19);
 	else if (i == 3)
-		printf("NO COLLECTIBLE !\n");
+		write(2, "NO COLLECTIBLE !\n", 17);
 	else if (i == 4)
-		printf("NUMBER OF PLAYER ERROR (1 PLAYER NEEDED) !\n");
+		write(2, "NUMBER OF PLAYER ERROR (1 PLAYER NEEDED) !\n", 43);
 	else if (i == 5)
-		printf("NUMBER OF EXIT ERROR  (1 EXIT NEEDED)!\n");
+		write(2, "NUMBER OF EXIT ERROR  (1 EXIT NEEDED)!\n", 39);
 	else if (i == 6)
 	{
-		printf("MAP ERROR ! (MAP MUST BE SURROUNDED BY WALLS, RECTANGLE AND");
-		printf("CONTAIN ONLY ['0', '1', 'P', 'C', 'E', 'M']\n");
+		write(2, "MAP ERROR ! (MAP MUST BE SURROUNDED BY WALLS, RECTANGLE", 55);
+		write(2, " AND CONTAIN ONLY ['0', '1', 'P', 'C', 'E', 'M']\n", 49);
 	}
-	printf("======================================================\n");
+	write(2, "======================================================\n", 55);
 	return (-1);
 }
 
@@ -82,8 +83,8 @@ static void	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == 65307)
 		quit(vars);
-	else if ((keycode == 65361 || keycode == 65362 || keycode == 65363
-			|| keycode == 65364) && vars->integers.status == 0)
+	else if ((keycode == 119 || keycode == 97 || keycode == 115
+			|| keycode == 100) && vars->integers.status == 0)
 	{
 		vars->integers.player_last_moove = keycode;
 		moove(keycode, vars);

@@ -6,7 +6,7 @@
 /*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 16:53:17 by nino              #+#    #+#             */
-/*   Updated: 2021/11/09 20:59:02 by nino             ###   ########.fr       */
+/*   Updated: 2021/11/11 16:08:58 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static void	mlx_int_put(t_vars *vars)
 
 static void	*player_direction(t_vars *vars)
 {
-	if (vars->integers.player_last_moove == 65362)
+	if (vars->integers.player_last_moove == 119)
 		return (vars->img.player_b.img);
-	else if (vars->integers.player_last_moove == 65361)
+	else if (vars->integers.player_last_moove == 97)
 		return (vars->img.player_l.img);
-	else if (vars->integers.player_last_moove == 65363)
+	else if (vars->integers.player_last_moove == 100)
 		return (vars->img.player_r.img);
 	else
 		return (vars->img.player_f.img);
@@ -89,8 +89,8 @@ void	update_map_window(t_vars *vars, int keycode)
 			locate_char(vars->map, 'E', 'y', 1));
 	put_map_char_window(vars, vars->integers.p_x, vars->integers.p_y);
 	put_map_char_window(vars,
-		(vars->integers.p_x - (keycode == 65363) + (keycode == 65361)),
-		(vars->integers.p_y - (keycode == 65364) + (keycode == 65362)));
+		(vars->integers.p_x - (keycode == 100) + (keycode == 97)),
+		(vars->integers.p_y - (keycode == 115) + (keycode == 119)));
 	while (vars->mob)
 	{
 		put_map_char_window(vars, vars->mob->x, vars->mob->y);
@@ -103,7 +103,6 @@ void	update_map_window(t_vars *vars, int keycode)
 
 void	put_map_window(t_vars *vars)
 {
-	//put_map_char_window(vars, 10, 0);
 	int	x;
 	int	y;
 

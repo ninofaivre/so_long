@@ -6,7 +6,7 @@
 /*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:38:50 by nino              #+#    #+#             */
-/*   Updated: 2021/11/09 21:01:08 by nino             ###   ########.fr       */
+/*   Updated: 2021/11/11 16:18:16 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	load_img(t_vars *vars)
 	load_asset(vars, "asset/loose.xpm", &vars->img.loose);
 }
 
-t_mob	*init_mob(t_vars *vars)
+static t_mob	*init_mob(t_vars *vars)
 {
 	t_mob	*mob;
 	int		i;

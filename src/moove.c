@@ -6,7 +6,7 @@
 /*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:17:33 by nino              #+#    #+#             */
-/*   Updated: 2021/11/09 19:22:37 by nino             ###   ########.fr       */
+/*   Updated: 2021/11/11 16:09:28 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static char	next_player_char(int keycode, t_vars *vars)
 {
-	return (vars->map[vars->integers.p_y - (keycode == 65362)
-			+ (keycode == 65364)][vars->integers.p_x - (keycode == 65361)
-		+ (keycode == 65363)]);
+	return (vars->map[vars->integers.p_y - (keycode == 119)
+			+ (keycode == 115)][vars->integers.p_x - (keycode == 97)
+		+ (keycode == 100)]);
 }
 
 static char	next_mob_char(t_vars *vars)
@@ -28,8 +28,8 @@ static char	next_mob_char(t_vars *vars)
 static void	moove_player(int keycode, t_vars *vars)
 {
 	vars->map[vars->integers.p_y][vars->integers.p_x] = '0';
-	vars->integers.p_x += (keycode == 65363) - (keycode == 65361);
-	vars->integers.p_y += (keycode == 65364) - (keycode == 65362);
+	vars->integers.p_x += (keycode == 100) - (keycode == 97);
+	vars->integers.p_y += (keycode == 115) - (keycode == 119);
 	vars->map[vars->integers.p_y][vars->integers.p_x] = 'P';
 }
 
