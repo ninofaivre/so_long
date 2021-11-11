@@ -26,7 +26,7 @@ SRC = $(wildcard src/*.c)
 OBJ = $(addprefix $(DIR_OBJ)/, $(subst src/,, $(SRC:.c=.o)))
 
 GNL:
-	@make -C Get_Next_Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
+	@make -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
 
 $(DIR_OBJ)/%.o : $(DIR_SRC)/%.c ./include/header.h
 	@mkdir -p $(DIR_OBJ)
@@ -40,7 +40,7 @@ all: GNL $(OBJ) $(NAME)
 
 clean:
 	@make $@ -C mlx_linux
-	@make $@ -C Get_Next_Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
+	@make $@ -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
 	@rm -rf $(OBJ)
 	@echo "removing $(OBJ)"
 
