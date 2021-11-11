@@ -6,7 +6,7 @@
 #    By: nino <nino@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 21:06:19 by nino              #+#    #+#              #
-#    Updated: 2021/11/11 16:33:28 by nino             ###   ########.fr        #
+#    Updated: 2021/11/11 16:53:23 by nino             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,3 +49,5 @@ fclean: clean
 	@echo "removing $(NAME)"
 
 re: fclean all
+
+.PHONY: all clean re fclean GNL
