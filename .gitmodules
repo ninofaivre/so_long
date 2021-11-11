@@ -1,0 +1,3 @@
+[submodule "Get-Next-Line"]
+	path = Get-Next-Line
+	url = git@github.com:ninofaivre/Get-Next-Line.git
