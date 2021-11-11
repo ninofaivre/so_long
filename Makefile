@@ -38,6 +38,8 @@ $(NAME): $(OBJ)
 
 all: GNL $(OBJ) $(NAME)
 
+bonus: all
+
 clean:
 	@make $@ -C mlx_linux
 	@make $@ -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
@@ -50,4 +52,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean re fclean GNL
+.PHONY: GNL all bonus clean re fclean
