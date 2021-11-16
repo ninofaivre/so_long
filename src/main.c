@@ -106,6 +106,7 @@ int	main(int ac, char **av)
 	if (parsing(&vars, av[1]) == -1)
 	{
 		quit(&vars);
+		mlx_destroy_window(vars.mlx, vars.win);
 		mlx_destroy_display(vars.mlx);
 		free(vars.mlx);
 		exit(EXIT_FAILURE);
