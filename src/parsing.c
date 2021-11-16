@@ -83,7 +83,7 @@ static int	check_map(char **map)
 	}
 	while (map[y][x] == '1')
 		x++;
-	if (map[y][x] != '\n' || map[y][x + 1] != '\0' || x != map_width)
+	if (((map[y][x] != '\0') && (map[y][x] != '\n' || map[y][x + 1] != '\0')) || x != map_width)
 		return (-1);
 	return (0);
 }
