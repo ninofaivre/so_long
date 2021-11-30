@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nino <nino@student.42.fr>                  +#+  +:+       +#+         #
+#    By: nfaivre <nfaivre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/09 21:06:19 by nino              #+#    #+#              #
-#    Updated: 2021/11/19 10:34:41 by nino             ###   ########.fr        #
+#    Updated: 2021/12/01 00:03:16 by nfaivre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,35 +23,34 @@ DIR_OBJ = .obj
 INCLUDE = -Iinclude -Imlx_linux
 
 SRC = $(wildcard $(DIR_SRC)/*.c)
-OBJ = $(addprefix $(DIR_OBJ)/, $(subst src/,, $(SRC:.c=.o)))
+OBJ = $(addprefix $(DIR_OBJ)/, $(notdir $(SRC:.c=.o)))
+GNL_OBJ = $(DIR_OBJ)/get_next_line*
 
-GNL:
-	@make -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
-
-GNL_OBJ = $(DIR_OBJ)/get_next_line.o $(DIR_OBJ)/get_next_line_utils.o
+mkdir_DIR_OBJ:
+	mkdir -p $(DIR_OBJ)
 
 $(DIR_OBJ)/%.o : $(DIR_SRC)/%.c ./include/header.h
-	@mkdir -p $(DIR_OBJ)
 	$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE)
 
-$(NAME): $(OBJ)
-	@make -C mlx_linux
-	$(CC) $(CFLAGS) $(OBJ) $(GNL_OBJ) -o $(NAME) -Lmlx_linux -l:libmlx_Linux.a -L/usr/lib -lXext -lX11
+$(NAME):
+	make -C mlx_linux
+	make -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
+	$(CC) $(CFLAGS) $(OBJ) $(GNL_OBJ) -o $(NAME) -Lmlx_linux -l:libmlx_Linux.a -lXext -lX11
 
-all: GNL $(OBJ) $(NAME)
+all: mkdir_DIR_OBJ $(OBJ) $(NAME)
 
 bonus: all
 
 clean:
-	@make $@ -C mlx_linux
-	@make $@ -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
-	@rm -rf $(OBJ)
-	@echo "removing $(OBJ)"
+	make $@ -C mlx_linux
+	make $@ -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
+	rm -f $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
-	@echo "removing $(NAME)"
+	make $@ -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
+	rm -f $(NAME)
+	rm -rf $(DIR_OBJ)
 
 re: fclean all
 
-.PHONY: GNL all bonus clean re fclean
+.PHONY: all bonus clean fclean re
