@@ -35,7 +35,7 @@ $(DIR_OBJ)/%.o : $(DIR_SRC)/%.c ./include/header.h
 $(NAME):
 	make -C mlx_linux
 	make -C Get-Next-Line DIR_OBJ=$(addprefix $(PWD)/, $(DIR_OBJ))
-	$(CC) $(CFLAGS) $(OBJ) $(GNL_OBJ) -o $(NAME) -Lmlx_linux -l:libmlx_Linux.a -lXext -lX11
+	$(CC) $(CFLAGS) $(OBJ) $(GNL_OBJ) -o $(NAME) -Lmlx_linux -lmlx_Linux -lXext -lX11
 
 all: mkdir_DIR_OBJ $(OBJ) $(NAME)
 
